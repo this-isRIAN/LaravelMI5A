@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
 use Illuminate\Http\Request;
+use LDAP\Result;
 
 class FakultasController extends Controller
 {
@@ -12,7 +13,12 @@ class FakultasController extends Controller
      */
     public function index()
     {
-        //
+        // panggil model fakultas
+        $result = Fakultas::all();
+        //dd($result);
+
+        //Kirim data $result ke views fakultas/index.blade.php
+        return view('fakultas.index')->with('fakultas', $result);
     }
 
     /**
